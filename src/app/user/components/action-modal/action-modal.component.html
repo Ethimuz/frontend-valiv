@@ -1,0 +1,57 @@
+<div class="container-fluid" *ngIf="data.event !== 'logout'; else getOut">
+    <h1 mat-dialog-title class="text-center">Modal for {{data.event}}</h1>
+    <div mat-dialog-content>
+        <p class="mb-4">
+            desea {{data.event}} este examen:
+        </p>
+        <div class="container-fluid" *ngIf="exam">
+            <div class="row mt-2">
+                <div class="col">Nombre del paciente</div>
+                <div class="col">{{exam.patientName}} {{exam.patientLastName}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">Telefono</div>
+                <div class="col">{{exam.phone}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">RUT</div>
+                <div class="col">{{exam.rut}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">Edad</div>
+                <div class="col">{{exam.age}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">Prediccion del examen</div>
+                <div class="col">{{exam.prediction}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">imagen</div>
+                <div class="col">
+                    <img [src]="exam.image" *ngIf="exam.image" class="w-50">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center" *ngIf="!exam">
+            <strong>¡You need to press over a exam!</strong>
+        </div>
+    </div>
+    <mat-dialog-actions align="end" *ngIf="exam">
+        <button mat-button mat-dialog-close>Cerrar</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="action()">Continuar</button>
+    </mat-dialog-actions>
+</div>
+
+<ng-template #getOut>
+    <h1 mat-dialog-title class="text-center">¿Estas seguro que desea cerrar sesion?</h1>
+    <mat-dialog-actions class="w-100 text-center">
+        <div class="row w-100 justify-content-center align-items-center">
+            <div class="col text-center">
+                <button mat-button mat-dialog-close>Cancelar</button>
+            </div>
+            <div class="col text-center">
+                <button mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Cerrar sesion</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</ng-template>

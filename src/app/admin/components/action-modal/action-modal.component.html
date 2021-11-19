@@ -1,0 +1,47 @@
+<div class="container-fluid" *ngIf="data.event !== 'logout'; else getOut">
+    <h1 mat-dialog-title class="text-center">Modal for {{data.event}}</h1>
+    <div mat-dialog-content>
+        <p class="mb-4">
+            In this modal you will {{data.event}} this information:
+        </p>
+        <div class="container-fluid" *ngIf="user">
+            <div class="row mt-2">
+                <div class="col">Nombre</div>
+                <div class="col">{{user.name}} {{user.lastname}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">Telefono</div>
+                <div class="col">{{user.phone}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">Institucion</div>
+                <div class="col">{{user.institution}}</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">Especialidad</div>
+                <div class="col">{{user.speciality}}</div>
+            </div>
+        </div>
+        <div class="container-fluid text-center" *ngIf="!user">
+            <strong>¡Necesita seleccionar un usuario!</strong>
+        </div>
+    </div>
+    <mat-dialog-actions align="end" *ngIf="user">
+        <button mat-button mat-dialog-close>Cerrar</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="action()">Continuar</button>
+    </mat-dialog-actions>
+</div>
+
+<ng-template #getOut>
+    <h1 mat-dialog-title class="text-center">¿Estas seguro que desea cerrar sesion?</h1>
+    <mat-dialog-actions class="w-100 text-center">
+        <div class="row w-100 justify-content-center align-items-center">
+            <div class="col text-center">
+                <button mat-button mat-dialog-close>Cancelar</button>
+            </div>
+            <div class="col text-center">
+                <button mat-button color="warn" [mat-dialog-close]="true" (click)="logout()" cdkFocusInitial>Cerrar sesion</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</ng-template>

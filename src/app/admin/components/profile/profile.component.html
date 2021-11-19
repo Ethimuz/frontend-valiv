@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row  justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5 register">
+            <form class="form" [formGroup]="emailForm" (ngSubmit)="onSubmitEmail()">
+                <div class="row">
+                    <div class="col-12 col-xxl-12">
+                        <div class="card card-info my-3">
+                            <div class="card-header">
+                                <h1 class="text-center m-0">Modificar correo</h1>
+                            </div>
+                            <div class="card-body">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Ingresa tu correo electronico</mat-label>
+                                    <input matInput formControlName="email" placeholder="pat@example.com" required>
+                                    <mat-error *ngIf="email?.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Ingresa tu correo electronico nuevo</mat-label>
+                                    <input matInput formControlName="emailNew" placeholder="pat@example.com" required>
+                                    <mat-error *ngIf="email?.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Confirmar correo electronico</mat-label>
+                                    <input matInput formControlName="emailConfirm" placeholder="pat@example.com" required>
+                                    <mat-error *ngIf="email?.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                                <div class="d-flex  align-items-bot justify-content-end">
+                                    <button type="submit" class="btn btn-register">Actualizar correo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form class="form" [formGroup]="passwordForm" (ngSubmit)="onSubmitPass()">
+                <div class="col-12 col-xxl-12">
+                    <div class="card card-info my-3">
+                        <div class="card-header">
+                            <h1 class="text-center m-0">Modificar contraseña</h1>
+                        </div>
+                        <div class="card-body">
+                            <mat-form-field class="mt-3" appearance="outline">
+                                <mat-label>Introduce tu contraseña</mat-label>
+                                <input matInput formControlName="password" [type]="hideP ? 'password' : 'text'" required>
+                                <button mat-icon-button matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideP">
+                                        <mat-icon>{{hideP ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                            </mat-form-field>
+
+                            <mat-form-field class="mt-3" appearance="outline">
+                                <mat-label>Introduce tu contraseña nueva</mat-label>
+                                <input matInput formControlName="validatePassword" [type]="hideNewP ? 'password' : 'text'" required>
+                                <button mat-icon-button matSuffix (click)="hideNewP = !hideNewP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewP">
+                                         <mat-icon>{{hideNewP ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                            </mat-form-field>
+
+                            <mat-form-field class="mt-3" appearance="outline">
+                                <mat-label>Confrimar contraseña</mat-label>
+                                <input matInput formControlName="validatePassword" [type]="hideConfirmP ? 'password' : 'text'" required>
+                                <button mat-icon-button matSuffix (click)="hideConfirmP = !hideConfirmP" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmP">
+                                         <mat-icon>{{hideConfirmP ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                            </mat-form-field>
+                            <div class="d-flex align-items-bot justify-content-end">
+                                <button type="submit" class="btn btn-register">Actualizar contraseña</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

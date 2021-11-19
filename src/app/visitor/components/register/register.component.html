@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="row text-center">
+        <h1 class="text-center">ValiV</h1>
+        <div class="col-12 register">
+            <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <!-- <H2 class="mt-3 mx-auto text-center">Registro</H2> -->
+                <mat-form-field class="mt-3" appearance="outline">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name" placeholder="Nombre" required>
+                </mat-form-field>
+
+                <mat-form-field class="mt-3" appearance="outline">
+                    <mat-label>Apellido</mat-label>
+                    <input matInput formControlName="lastName" placeholder="Apellido" required>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput formControlName="email" placeholder="pat@example.com" required>
+                </mat-form-field>
+
+                <mat-form-field class="mt-3" appearance="outline">
+                    <mat-label>Teléfono móvil +569</mat-label>
+                    <input matInput type="tel" maxlength="8" minlength="8" formControlName="phone" placeholder="+569 ********" required>
+                </mat-form-field>
+
+
+                <mat-form-field class="mt-3" appearance="outline">
+                    <mat-label>Nombre del hospital</mat-label>
+                    <input matInput formControlName="nameHospital" placeholder="Nombre hospital" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Seleccione la espcecialidad</mat-label>
+                    <mat-select disableRipple formControlName="especialidad">
+                        <mat-option value="Tecnologia Medica">Tecnologia Medica</mat-option>
+                        <mat-option value="Medicina General">Medicina General</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="mt-3" appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput formControlName="password" [type]="hidePass ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+                                <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                </mat-form-field>
+
+                <mat-form-field class="mt-3" appearance="outline">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput formControlName="validatePassword" [type]="hideConfirmPass ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hideConfirmPass = !hideConfirmPass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPass">
+                                <mat-icon>{{hideConfirmPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                </mat-form-field>
+
+                <button class="btn btn-register" type="submit">Registrarse</button>
+
+            </form>
+        </div>
+    </div>
+</div>

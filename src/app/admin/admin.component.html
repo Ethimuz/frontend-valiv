@@ -1,0 +1,33 @@
+<div class="custom-container" [class.container-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="container-toolbar py-2">
+        <button (click)="snav.toggle()" class="btn mr-3">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h4 class="font-brand-secondary text-light ms-3">Administración</h4>
+    </mat-toolbar>
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" style="overflow: hidden;">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <div class="h-100 p-0 m-0 align-items-center">
+                <div id="accordion h-75 m-0 p-0" style="min-width: 260px; padding: 0 !important;">
+                    <a class="list-group-item list-group-item-action text-white py-3" [routerLink]="['examenes']" [routerLinkActive]="['active']">
+                        <i class="fas fa-chart-bar me-2" style="font-size: 20px;"></i><span style="font-size:15px;">Solicitudes de registro</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-white py-3" [routerLink]="['usuarios']" [routerLinkActive]="['active']">
+                        <i class="fas fa-user-circle me-2" style="font-size: 20px;"></i><span style="font-size:15px;">Usuarios</span>
+                    </a>
+                    <a class="list-group-item list-group-item-action text-white py-3" [routerLink]="['perfil']" [routerLinkActive]="['active']">
+                        <i class="fas fa-cog me-2" style="font-size: 20px;"></i><span style="font-size:15px;">Perfil</span>
+                    </a>
+                </div>
+                <div class="row align-items-end h-75 w-100 p-0">
+                    <div class="col">
+                        <button mat-raised-button class="btn-lg text-dark w-100 ms-2" (click)="logout()">Cerrar sesion</button>
+                    </div>
+                </div>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

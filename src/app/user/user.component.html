@@ -1,0 +1,40 @@
+<div class="custom-container" [class.container-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="container-toolbar py-2">
+        <button (click)="snav.toggle()" class="btn mr-3">
+        <i class="fas fa-bars"></i>
+      </button>
+        <h4 class="font-brand-secondary text-light ms-3">ValiV</h4>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <div id="accordion" style="min-width: 260px;">
+                <a class="list-group-item list-group-item-action text-white" [routerLink]="['upload']" [routerLinkActive]="['active']">Subir examen</a>
+                <a class="list-group-item list-group-item-action text-white" [routerLink]="['list']" [routerLinkActive]="['active']">Examenes</a>
+                <a class="list-group-item list-group-item-action text-white" [routerLink]="['profile']" [routerLinkActive]="['active']">Modificar perfil</a>
+            </div>
+            <div class="row align-items-end h-75 w-100 pb-2">
+                <div class="col position">
+                    <button mat-raised-button class="btn-lg text-dark w-100 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Cerrar sesion</button>
+                </div>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                ¿Estas seguro que desea cerrar sesion?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Atras</button>
+                <button type="button" class="btn btn-danger" (click)="logout()">Cerrar sesion</button>
+            </div>
+        </div>
+    </div>
+</div>

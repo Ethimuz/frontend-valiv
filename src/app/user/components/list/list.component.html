@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col ms-5 p-5">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Escriba para filtrar...</mat-label>
+                        <span matPrefix><mat-icon class="me-4">search</mat-icon> &nbsp;</span>
+                        <input matInput (keyup)="onKey($event)" #input>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mat-elevation-z8 p-0">
+                    <mat-table [dataSource]="dataSource" class="w-100">
+                        <!-- NAME Column -->
+                        <ng-container matColumnDef="fullName">
+                            <mat-header-cell *matHeaderCellDef> Nombre del paciente </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.patientName}} {{element.patientLastName}} </mat-cell>
+                        </ng-container>
+                        <!-- ADDRESS Column -->
+                        <ng-container matColumnDef="phone">
+                            <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+                        </ng-container>
+                        <!-- ANIMAL Column -->
+                        <ng-container matColumnDef="rut">
+                            <mat-header-cell *matHeaderCellDef> RUT </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.rut}} </mat-cell>
+                        </ng-container>
+                        <!-- FECHA Column -->
+                        <ng-container matColumnDef="age">
+                            <mat-header-cell *matHeaderCellDef> Edad </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.age }} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="prediction">
+                            <mat-header-cell *matHeaderCellDef> Prediccion del examen </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.prediction }} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="actions">
+                            <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="far fa-eye" style="cursor: pointer;" (click)="openModal('ver',element)"></i>
+                                    </div>
+                                    <div class="col">
+                                        <i class="fas fa-trash-alt" style="cursor: pointer;" (click)="openModal('eliminar',element)"></i>
+                                    </div>
+                                </div>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let element; columns: displayedColumns;" [ngClass]="element === examSelected? 'clickedClass' : ''" (click)="examSelected = element" style="cursor: pointer;"></mat-row>
+                    </mat-table>
+                    <mat-paginator [pageSizeOptions]="[10, 15, 25, 35]" showFirstLastButtons></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

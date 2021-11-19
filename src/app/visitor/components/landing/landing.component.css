@@ -1,0 +1,31 @@
+h1 {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+.card-content {
+  align-items: center;
+  background-color: #73205D;
+}
+.card-img {
+  background-color: #73205D;
+}
+.content {
+  color: white;
+  align-self: flex-start;
+  margin: 12px;
+}
+.contacts {
+  margin-bottom: 0px;
+  font-size: 20px;
+  color: white;
+}
+footer {
+  background-color: #73205D;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+}
+.fab {
+  font-size: 25px;
+  color: white;
+}
